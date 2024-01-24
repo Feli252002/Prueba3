@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col size="8">
+          <img alt="login" src="assets/img/logo_DuocUC.png"/>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card-header>
+      <ion-card-title>Inicio de Sesión</ion-card-title>    
+    </ion-card-header>
+    
+    <form [formGroup]="formLogIn" class="auth-form" (ngSubmit)="submit()">
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <div *ngIf="formLogIn.get('email')?.hasError && formLogIn.get('email')?.touched">
+          <div *ngIf="formLogIn.get('email')?.hasError('required')">
+            Ingrese un email o usuario
+          </div>
+          <div *ngIf="formLogIn.get('email')?.hasError('email')">
+            Ingrese un correo valido
+          </div>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <div *ngIf="formLogIn.get('password')?.hasError('required') && formLogIn.get('password')?.touched">
+          Ingrese una contraseña
+        </div>
+
+        <br>
+
+        <p class="ion-text-end"><a style="text-decoration: none;" [routerLink]="['/reset-password']">¿Olvidaste tu contraseña?</a></p>
+
+        <br>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" class="submit" type="submit" [disabled]="formLogIn.invalid">
+              Iniciar Sesión
+              <ion-icon slot="end" name="log-in-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+      </ion-card-content>
+    </form>
+
+  </ion-card>
+</ion-content>

@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-icon (click)="dismissModal()" name="close-circle-outline" slot="start"></ion-icon>
+      <ion-title style="text-align: center;" class="nombreAPP">TeLlevoAPP</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list lines="full">
+        <form [formGroup]="formAdd" class="auth-form">
+
+          <ng-container *ngIf="viaje; else agregarTitulo">
+            <ion-title class="titulo1">Editar Viaje</ion-title>
+          </ng-container>
+          
+          <ng-template #agregarTitulo>
+            <ion-title class="titulo2">Agregar Viaje</ion-title>
+          </ng-template>
+          <ion-avatar *ngIf="formAdd.value.image">
+            <img [src]="formAdd.value.image">
+          </ion-avatar>
+
+          <ion-icon *ngIf="!formAdd.value.image" name="image-outline" class="image-icon"></ion-icon>
+          <br>
+          <div style="display: flex; justify-content: center;">
+            <ion-button (click)="takeImage()" size="small" shape="round">
+              seleccionar/tomar imagen
+            </ion-button>
+          </div>
+
+          <ion-item>
+            <ion-label class="form-label" position="floating">region</ion-label>
+            <ion-input type="text" class="form-control" formControlName="region" requerid></ion-input>
+          </ion-item>
+          <div *ngIf="formAdd.get('region')?.hasError('required') && formAdd.get('region')?.touched">
+            Ingrese un dato valido
+          </div>
+          <ion-item>
+            <ion-label class="form-label" position="floating">comuna</ion-label>
+            <ion-input type="text" class="form-control" formControlName="comuna" requerid></ion-input>
+          </ion-item>
+          <div *ngIf="formAdd.get('comuna')?.hasError('required') && formAdd.get('comuna')?.touched">
+            Ingrese un dato valido
+          </div>
+          <ion-item>
+            <ion-label class="form-label" position="floating">Capacidad</ion-label>
+            <ion-input type="number" class="form-control" formControlName="capacidad" requerid></ion-input>
+          </ion-item>
+          <div *ngIf="formAdd.get('capacidad')?.hasError('required') && formAdd.get('capacidad')?.touched">
+            Ingrese capacidad minima
+          </div>
+          <div *ngIf="formAdd.get('capacidad')?.hasError('min') && formAdd.get('capacidad')?.touched">
+            La capacidad no puede ser menor a 1
+          </div>
+          <div *ngIf="formAdd.get('capacidad')?.hasError('max') && formAdd.get('capacidad')?.touched">
+            La capacidad no puede ser mayor a 4
+          </div>
+          <ion-item>
+            <ion-label class="form-label" position="floating">Salida</ion-label>
+            <ion-input type="number" class="form-control" formControlName="salida" requerid></ion-input>
+          </ion-item>
+          <div *ngIf="formAdd.get('salida')?.hasError('required') && formAdd.get('salida')?.touched">
+            Ingrese un horario de salida
+          </div>
+          <ion-item>
+            <ion-label class="form-label" position="floating">Precio</ion-label>
+            <ion-input type="number" class="form-control" formControlName="precio" requerid></ion-input>
+          </ion-item>
+          <div *ngIf="formAdd.get('precio')?.hasError('required') && formAdd.get('precio')?.touched">
+            Ingrese un precio
+          </div>
+          <div *ngIf="formAdd.get('precio')?.hasError('min') && formAdd.get('precio')?.touched">
+            El precio debe tener un minimo de $500
+          </div>
+
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" [disabled]="formAdd.invalid" (click)="submit()">
+                {{viaje? 'Actualizar viaje' : 'Agregar viaje'}}
+                <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

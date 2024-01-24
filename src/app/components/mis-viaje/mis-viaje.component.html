@@ -1,0 +1,31 @@
+<ion-content>
+  <br><br><br>
+  <div class="contenedor">
+    
+      <ion-item-sliding *ngFor="let v of viajes">
+        <ion-item>
+          <img [src]="v.image">
+          <ion-label>
+            <strong class="name" >Region: </strong>{{v.region}} <br>
+            <div class="data">
+              <strong>comuna: </strong>{{v.comuna}} <br>
+              <strong>fecha: </strong>12/05/2024
+            </div>
+          </ion-label>
+        </ion-item>
+  
+        <ion-item-options>
+          <ion-item-option (click)="addUpdateViaje(v)">
+            <ion-icon class="option-btn" name="create-outline"></ion-icon>
+          </ion-item-option>
+  
+          <ion-item-option (click)="confirmEliminarV(v)" color="danger">
+            <ion-icon class="option-btn" name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+  
+      </ion-item-sliding>
+  
+  </div>
+  
+</ion-content>

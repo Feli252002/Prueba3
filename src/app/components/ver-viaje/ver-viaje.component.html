@@ -1,0 +1,35 @@
+<br><br><br>
+<ion-content>
+  <ion-card *ngFor="let v of viajes">
+
+      <ion-card-header>
+        <img [src]="v.image"/>
+        <ion-card-title>Viaje a {{v.region}}</ion-card-title>
+        <ion-card-subtitle>Hacia la comuna de {{v.comuna}}</ion-card-subtitle>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <strong>Capacidad vehicular disponible: </strong>{{v.capacidad}} asientos<br>
+        <strong>Horario de salida: </strong>{{v.salida | date: "HH:mm"}} <br>
+        <strong>Costo: $</strong>{{v.precio | currency: 'CLP'}} <br>
+      </ion-card-content>
+  
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button class="boton" fill="clear">
+              <ion-icon name="call-outline" slot="start"></ion-icon>
+              Llamar
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button class="boton" fill="clear">
+              <ion-icon name="cash-outline" slot="start"></ion-icon>
+              Comprar viaje
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
+    </ion-card>
+</ion-content>

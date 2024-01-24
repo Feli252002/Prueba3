@@ -1,0 +1,22 @@
+npm install
+npm install firebase @angular/fire
+npm install @capacitor/camera
+npm install @ionic/pwa-elements
+
+----------------------------
+npx cap sync
+
+correo: felipev9107@gmail.com
+contraseña: 123456789
+
+correo: robertoa98@gmail.com
+contraseña: 1234567
+
+correo: juancarlosb69@gmail.com
+contraseña: 12345678
+
+-----------------------------
+
+Cuenta app
+
+tellevoapp.2024@gmail.com
