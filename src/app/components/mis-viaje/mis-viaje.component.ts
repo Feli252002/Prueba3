@@ -4,7 +4,6 @@ import { Viaje } from 'src/app/interfaces/viaje';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { AgregarViajeComponent } from '../agregar-viaje/agregar-viaje.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mis-viaje',

@@ -1,5 +1,4 @@
 export interface Viaje {
-    filter(arg0: (v: any) => boolean): Viaje;
     region: string,
     comuna: string,
     salida: number,
@@ -8,3 +7,5 @@ export interface Viaje {
     image: string,
     id: string
 }
+
+
